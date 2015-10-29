@@ -33,6 +33,9 @@ public class Usuario implements Serializable
    @Column(nullable = false)
    private String Email;
 
+   @Column
+   private String cpf;
+
    public Long getId()
    {
       return this.id;
@@ -124,6 +127,16 @@ public class Usuario implements Serializable
       this.Email = Email;
    }
 
+   public String getCpf()
+   {
+      return cpf;
+   }
+
+   public void setCpf(String cpf)
+   {
+      this.cpf = cpf;
+   }
+
    @Override
    public String toString()
    {
@@ -136,6 +149,8 @@ public class Usuario implements Serializable
          result += ", Endereco: " + Endereco;
       if (Email != null && !Email.trim().isEmpty())
          result += ", Email: " + Email;
+      if (cpf != null && !cpf.trim().isEmpty())
+         result += ", cpf: " + cpf;
       return result;
    }
 }
