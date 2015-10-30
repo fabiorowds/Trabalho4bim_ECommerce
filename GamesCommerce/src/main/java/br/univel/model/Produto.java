@@ -8,6 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.Version;
 import java.lang.Override;
+import java.util.Set;
+import java.util.HashSet;
+import br.univel.model.Pedido;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Produto implements Serializable
@@ -35,6 +39,12 @@ public class Produto implements Serializable
 
    @Column
    private String imagem;
+
+   @ManyToMany
+   private Set<Pedido> pedidos = new HashSet<Pedido>();
+
+   @Column
+   private int quantidade;
 
    public Long getId()
    {
@@ -137,6 +147,26 @@ public class Produto implements Serializable
       this.imagem = imagem;
    }
 
+   public Set<Pedido> getPedidos()
+   {
+      return this.pedidos;
+   }
+
+   public void setPedidos(final Set<Pedido> pedidos)
+   {
+      this.pedidos = pedidos;
+   }
+
+   public int getQuantidade()
+   {
+      return quantidade;
+   }
+
+   public void setQuantidade(int quantidade)
+   {
+      this.quantidade = quantidade;
+   }
+
    @Override
    public String toString()
    {
@@ -150,6 +180,7 @@ public class Produto implements Serializable
          result += ", Estoque: " + Estoque;
       if (imagem != null && !imagem.trim().isEmpty())
          result += ", imagem: " + imagem;
+      result += ", quantidade: " + quantidade;
       return result;
    }
 }

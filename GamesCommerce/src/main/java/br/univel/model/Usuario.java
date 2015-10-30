@@ -8,6 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.Version;
 import java.lang.Override;
+import java.util.Set;
+import java.util.HashSet;
+import br.univel.model.Pedido;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
 
 @Entity
 public class Usuario implements Serializable
@@ -35,6 +40,9 @@ public class Usuario implements Serializable
 
    @Column
    private String cpf;
+
+   @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+   private Set<Pedido> pedido = new HashSet<Pedido>();
 
    public Long getId()
    {
@@ -152,5 +160,15 @@ public class Usuario implements Serializable
       if (cpf != null && !cpf.trim().isEmpty())
          result += ", cpf: " + cpf;
       return result;
+   }
+
+   public Set<Pedido> getPedido()
+   {
+      return this.pedido;
+   }
+
+   public void setPedido(final Set<Pedido> pedido)
+   {
+      this.pedido = pedido;
    }
 }
