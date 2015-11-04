@@ -1,0 +1,105 @@
+<div class="form-horizontal">
+    <h3>Create a new PedidoItens</h3>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-sm-2">
+            <a id="Create" name="Create" class="btn btn-primary" href="#/PedidoItens/new"><span class="glyphicon glyphicon-plus-sign"></span> Create</a>
+        </div>
+    </div>
+</div>
+<hr/>
+<div>
+    <h3>Search for PedidoItens</h3>
+    <form id="PedidoItensSearch" class="form-horizontal">
+        
+
+    <div class="form-group">
+        <label for="DescProduto" class="col-sm-2 control-label">Desc Produto</label>
+        <div class="col-sm-10">
+            <input id="DescProduto" name="DescProduto" class="form-control" type="text" ng-model="search.DescProduto" placeholder="Enter the PedidoItens Desc Produto"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="VlrProduto" class="col-sm-2 control-label">Vlr Produto</label>
+        <div class="col-sm-10">
+            <input id="VlrProduto" name="VlrProduto" class="form-control" type="text" ng-model="search.VlrProduto" placeholder="Enter the PedidoItens Vlr Produto"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="QtdeItem" class="col-sm-2 control-label">Qtde Item</label>
+        <div class="col-sm-10">
+            <input id="QtdeItem" name="QtdeItem" class="form-control" type="text" ng-model="search.QtdeItem" placeholder="Enter the PedidoItens Qtde Item"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="VlrTotal" class="col-sm-2 control-label">Vlr Total</label>
+        <div class="col-sm-10">
+            <input id="VlrTotal" name="VlrTotal" class="form-control" type="text" ng-model="search.VlrTotal" placeholder="Enter the PedidoItens Vlr Total"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="idItem" class="col-sm-2 control-label">Id Item</label>
+        <div class="col-sm-10">
+            <input id="idItem" name="idItem" class="form-control" type="text" ng-model="search.idItem" placeholder="Enter the PedidoItens Id Item"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="pedido" class="col-sm-2 control-label">Pedido</label>
+        <div class="col-sm-10">
+            <select id="pedido" name="pedido" class="form-control" ng-model="search.pedido" ng-options="p as p.id for p in pedidoList">
+                <option value="">Choose a Pedido</option>
+            </select>
+        </div>
+    </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-sm-10">
+                <a id="Search" name="Search" class="btn btn-primary" ng-click="performSearch()"><span class="glyphicon glyphicon-search"></span> Search</a>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="search-results">
+        <div class="table-responsive">
+        <table class="table table-responsive table-bordered table-striped clearfix">
+            <thead>
+                <tr>
+                    <th>Desc Produto</th>
+                    <th>Vlr Produto</th>
+                    <th>Qtde Item</th>
+                    <th>Vlr Total</th>
+                    <th>Id Item</th>
+                    <th>Pedido</th>
+                </tr>
+            </thead>
+            <tbody id="search-results-body">
+                <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+                    <td><a href="#/PedidoItens/edit/{{result.id}}">{{result.DescProduto}}</a></td>
+                    <td><a href="#/PedidoItens/edit/{{result.id}}">{{result.VlrProduto}}</a></td>
+                    <td><a href="#/PedidoItens/edit/{{result.id}}">{{result.QtdeItem}}</a></td>
+                    <td><a href="#/PedidoItens/edit/{{result.id}}">{{result.VlrTotal}}</a></td>
+                    <td><a href="#/PedidoItens/edit/{{result.id}}">{{result.idItem}}</a></td>
+                        <td><a href="#/PedidoItens/edit/{{result.id}}">{{result.pedido.id}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <ul class="pagination pagination-centered">
+        <li ng-class="{disabled:currentPage == 0}">
+            <a id="prev" href ng-click="previous()">«</a>
+        </li>
+        <li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}" ng-click="setPage(n)">
+            <a href ng-bind="n + 1">1</a>
+        </li>
+        <li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+            <a id="next" href ng-click="next()">»</a>
+        </li>
+    </ul>
+
+</div>

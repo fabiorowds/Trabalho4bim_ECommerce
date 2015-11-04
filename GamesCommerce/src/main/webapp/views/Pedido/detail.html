@@ -1,0 +1,53 @@
+<header ng-switch on="$location.path().indexOf('/Pedidos/new') > -1">
+    <h3 ng-switch-when="true">Create a new Pedido</h3>
+    <h3 ng-switch-when="false">View or edit Pedido</h3>
+</header>
+<form id="PedidoForm" name="PedidoForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+
+    <div class="form-group" ng-class="{'has-error': PedidoForm.usuario.$invalid}">
+        <label for="usuario" class="col-sm-2 control-label">Usuario</label>
+        <div id="usuarioControls" class="col-sm-10">
+        <select id="usuario" name="usuario" class="form-control" ng-model="usuarioSelection" ng-options="u.text for u in usuarioSelectionList"  >
+            <option value="">Choose a Usuario</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': PedidoForm.valor.$invalid}">
+        <label for="valor" class="col-sm-2 control-label">Valor</label>
+        <div id="valorControls" class="col-sm-10">
+            <input id="valor" name="valor" type="number" required class="form-control" ng-model="pedido.valor" placeholder="Enter the Pedido Valor"></input>
+            <span class="help-block error" ng-show="PedidoForm.valor.$error.required">required</span> 
+            <span class="help-block error" ng-show="PedidoForm.valor.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': PedidoForm.observacao.$invalid}">
+        <label for="observacao" class="col-sm-2 control-label">Observacao</label>
+        <div id="observacaoControls" class="col-sm-10">
+            <input id="observacao" name="observacao" type="text" class="form-control" ng-model="pedido.observacao" placeholder="Enter the Pedido Observacao"></input>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': PedidoForm.itemPedido.$invalid}">
+        <label for="itemPedido" class="col-sm-2 control-label">Item Pedido</label>
+        <div id="itemPedidoControls" class="col-sm-10">
+            <select id="itemPedido" name="itemPedido" multiple class="form-control" ng-model="itemPedidoSelection" ng-options="i.text for i in itemPedidoSelectionList">
+                <option value="">Choose a Item Pedido</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="savePedido" name="savePedido" class="btn btn-primary" ng-disabled="isClean() || PedidoForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deletePedido" name="deletePedido" class="btn btn-danger" ng-show="pedido.id" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

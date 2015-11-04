@@ -1,0 +1,72 @@
+<header ng-switch on="$location.path().indexOf('/PedidoItens/new') > -1">
+    <h3 ng-switch-when="true">Create a new PedidoItens</h3>
+    <h3 ng-switch-when="false">View or edit PedidoItens</h3>
+</header>
+<form id="PedidoItensForm" name="PedidoItensForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+
+    <div class="form-group" ng-class="{'has-error': PedidoItensForm.DescProduto.$invalid}">
+        <label for="DescProduto" class="col-sm-2 control-label">Desc Produto</label>
+        <div id="DescProdutoControls" class="col-sm-10">
+            <input id="DescProduto" name="DescProduto" type="text" required class="form-control" ng-model="pedidoItens.DescProduto" placeholder="Enter the PedidoItens Desc Produto"></input>
+            <span class="help-block error" ng-show="PedidoItensForm.DescProduto.$error.required">required</span> 
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': PedidoItensForm.VlrProduto.$invalid}">
+        <label for="VlrProduto" class="col-sm-2 control-label">Vlr Produto</label>
+        <div id="VlrProdutoControls" class="col-sm-10">
+            <input id="VlrProduto" name="VlrProduto" type="number" required class="form-control" ng-model="pedidoItens.VlrProduto" placeholder="Enter the PedidoItens Vlr Produto"></input>
+            <span class="help-block error" ng-show="PedidoItensForm.VlrProduto.$error.required">required</span> 
+            <span class="help-block error" ng-show="PedidoItensForm.VlrProduto.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': PedidoItensForm.QtdeItem.$invalid}">
+        <label for="QtdeItem" class="col-sm-2 control-label">Qtde Item</label>
+        <div id="QtdeItemControls" class="col-sm-10">
+            <input id="QtdeItem" name="QtdeItem" type="number" required class="form-control" ng-model="pedidoItens.QtdeItem" placeholder="Enter the PedidoItens Qtde Item"></input>
+            <span class="help-block error" ng-show="PedidoItensForm.QtdeItem.$error.required">required</span> 
+            <span class="help-block error" ng-show="PedidoItensForm.QtdeItem.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': PedidoItensForm.VlrTotal.$invalid}">
+        <label for="VlrTotal" class="col-sm-2 control-label">Vlr Total</label>
+        <div id="VlrTotalControls" class="col-sm-10">
+            <input id="VlrTotal" name="VlrTotal" type="number" required class="form-control" ng-model="pedidoItens.VlrTotal" placeholder="Enter the PedidoItens Vlr Total"></input>
+            <span class="help-block error" ng-show="PedidoItensForm.VlrTotal.$error.required">required</span> 
+            <span class="help-block error" ng-show="PedidoItensForm.VlrTotal.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': PedidoItensForm.idItem.$invalid}">
+        <label for="idItem" class="col-sm-2 control-label">Id Item</label>
+        <div id="idItemControls" class="col-sm-10">
+            <input id="idItem" name="idItem" type="number" required class="form-control" ng-model="pedidoItens.idItem" placeholder="Enter the PedidoItens Id Item"></input>
+            <span class="help-block error" ng-show="PedidoItensForm.idItem.$error.required">required</span> 
+            <span class="help-block error" ng-show="PedidoItensForm.idItem.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': PedidoItensForm.pedido.$invalid}">
+        <label for="pedido" class="col-sm-2 control-label">Pedido</label>
+        <div id="pedidoControls" class="col-sm-10">
+        <select id="pedido" name="pedido" class="form-control" ng-model="pedidoSelection" ng-options="p.text for p in pedidoSelectionList"  >
+            <option value="">Choose a Pedido</option>
+        </select>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="savePedidoItens" name="savePedidoItens" class="btn btn-primary" ng-disabled="isClean() || PedidoItensForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deletePedidoItens" name="deletePedidoItens" class="btn btn-danger" ng-show="pedidoItens.id" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>
