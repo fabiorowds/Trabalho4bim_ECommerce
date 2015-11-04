@@ -8,19 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.Version;
 import java.lang.Override;
-import br.univel.model.Usuario;
+import br.univel.model.Pedido;
 import javax.persistence.ManyToOne;
 import javax.persistence.FetchType;
 import javax.persistence.CascadeType;
-import br.univel.model.Produto;
-import java.util.Set;
-import java.util.HashSet;
-import javax.persistence.ManyToMany;
-import br.univel.model.PedidoItens;
-import javax.persistence.OneToMany;
 
 @Entity
-public class Pedido implements Serializable
+public class PedidoItens implements Serializable
 {
 
    @Id
@@ -31,17 +25,23 @@ public class Pedido implements Serializable
    @Column(name = "version")
    private int version;
 
-   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-   private Usuario usuario;
+   @Column(nullable = false)
+   private String DescProduto;
 
    @Column(nullable = false)
-   private double valor;
+   private double VlrProduto;
 
-   @Column
-   private String observacao;
+   @Column(nullable = false)
+   private int QtdeItem;
 
-   @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
-   private Set<PedidoItens> itemPedido = new HashSet<PedidoItens>();
+   @Column(nullable = false)
+   private double VlrTotal;
+
+   @Column(nullable = false)
+   private Long idItem;
+
+   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+   private Pedido pedido;
 
    public Long getId()
    {
@@ -70,11 +70,11 @@ public class Pedido implements Serializable
       {
          return true;
       }
-      if (!(obj instanceof Pedido))
+      if (!(obj instanceof PedidoItens))
       {
          return false;
       }
-      Pedido other = (Pedido) obj;
+      PedidoItens other = (PedidoItens) obj;
       if (id != null)
       {
          if (!id.equals(other.id))
@@ -94,53 +94,77 @@ public class Pedido implements Serializable
       return result;
    }
 
-   public Usuario getUsuario()
+   public String getDescProduto()
    {
-      return this.usuario;
+      return DescProduto;
    }
 
-   public void setUsuario(final Usuario usuario)
+   public void setDescProduto(String DescProduto)
    {
-      this.usuario = usuario;
+      this.DescProduto = DescProduto;
    }
 
-   public double getValor()
+   public double getVlrProduto()
    {
-      return valor;
+      return VlrProduto;
    }
 
-   public void setValor(double valor)
+   public void setVlrProduto(double VlrProduto)
    {
-      this.valor = valor;
+      this.VlrProduto = VlrProduto;
    }
 
-   public String getObservacao()
+   public int getQtdeItem()
    {
-      return observacao;
+      return QtdeItem;
    }
 
-   public void setObservacao(String observacao)
+   public void setQtdeItem(int QtdeItem)
    {
-      this.observacao = observacao;
+      this.QtdeItem = QtdeItem;
+   }
+
+   public double getVlrTotal()
+   {
+      return VlrTotal;
+   }
+
+   public void setVlrTotal(double VlrTotal)
+   {
+      this.VlrTotal = VlrTotal;
+   }
+
+   public Long getIdItem()
+   {
+      return idItem;
+   }
+
+   public void setIdItem(Long idItem)
+   {
+      this.idItem = idItem;
    }
 
    @Override
    public String toString()
    {
       String result = getClass().getSimpleName() + " ";
-      result += "valor: " + valor;
-      if (observacao != null && !observacao.trim().isEmpty())
-         result += ", observacao: " + observacao;
+      if (DescProduto != null && !DescProduto.trim().isEmpty())
+         result += "DescProduto: " + DescProduto;
+      result += ", VlrProduto: " + VlrProduto;
+      result += ", QtdeItem: " + QtdeItem;
+      result += ", VlrTotal: " + VlrTotal;
+      if (idItem != null)
+         result += ", idItem: " + idItem;
       return result;
    }
 
-   public Set<PedidoItens> getItemPedido()
+   public Pedido getPedido()
    {
-      return this.itemPedido;
+      return this.pedido;
    }
 
-   public void setItemPedido(final Set<PedidoItens> itemPedido)
+   public void setPedido(final Pedido pedido)
    {
-      this.itemPedido = itemPedido;
+      this.pedido = pedido;
    }
 }
