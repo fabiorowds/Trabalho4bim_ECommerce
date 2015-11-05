@@ -29,16 +29,16 @@ public class Usuario implements Serializable
    private int version;
 
    @Column(nullable = false)
-   private String Nome;
+   private String nome;
 
    @Column(nullable = false)
-   private String Senha;
+   private String senha;
 
    @Column
-   private String Endereco;
+   private String endereco;
 
    @Column(nullable = false)
-   private String Email;
+   private String email;
 
    @Column
    private String cpf;
@@ -99,42 +99,42 @@ public class Usuario implements Serializable
 
    public String getNome()
    {
-      return Nome;
+      return nome;
    }
 
-   public void setNome(String Nome)
+   public void setNome(String nome)
    {
-      this.Nome = Nome;
+      this.nome = nome;
    }
 
    public String getSenha()
    {
-      return Senha;
+      return senha;
    }
 
-   public void setSenha(String Senha)
+   public void setSenha(String senha)
    {
-      this.Senha = Senha;
+      this.senha = senha;
    }
 
    public String getEndereco()
    {
-      return Endereco;
+      return endereco;
    }
 
-   public void setEndereco(String Endereco)
+   public void setEndereco(String endereco)
    {
-      this.Endereco = Endereco;
+      this.endereco = endereco;
    }
 
    public String getEmail()
    {
-      return Email;
+      return email;
    }
 
-   public void setEmail(String Email)
+   public void setEmail(String email)
    {
-      this.Email = Email;
+      this.email = email;
    }
 
    public String getCpf()
@@ -151,14 +151,14 @@ public class Usuario implements Serializable
    public String toString()
    {
       String result = getClass().getSimpleName() + " ";
-      if (Nome != null && !Nome.trim().isEmpty())
-         result += "Nome: " + Nome;
-      if (Senha != null && !Senha.trim().isEmpty())
-         result += ", Senha: " + Senha;
-      if (Endereco != null && !Endereco.trim().isEmpty())
-         result += ", Endereco: " + Endereco;
-      if (Email != null && !Email.trim().isEmpty())
-         result += ", Email: " + Email;
+      if (nome != null && !nome.trim().isEmpty())
+         result += "Nome: " + nome;
+      if (senha != null && !senha.trim().isEmpty())
+         result += ", Senha: " + senha;
+      if (endereco != null && !endereco.trim().isEmpty())
+         result += ", Endereco: " + endereco;
+      if (email != null && !email.trim().isEmpty())
+         result += ", Email: " + email;
       if (cpf != null && !cpf.trim().isEmpty())
          result += ", cpf: " + cpf;
       return result;
