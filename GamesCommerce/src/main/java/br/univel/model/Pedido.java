@@ -18,8 +18,10 @@ import java.util.HashSet;
 import javax.persistence.ManyToMany;
 import br.univel.model.PedidoItens;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
 public class Pedido implements Serializable
 {
 

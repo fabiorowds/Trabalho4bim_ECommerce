@@ -12,8 +12,10 @@ import br.univel.model.Pedido;
 import javax.persistence.ManyToOne;
 import javax.persistence.FetchType;
 import javax.persistence.CascadeType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
 public class PedidoItens implements Serializable
 {
 

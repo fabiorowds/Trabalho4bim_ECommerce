@@ -13,8 +13,10 @@ import java.util.HashSet;
 import br.univel.model.Pedido;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
 public class Usuario implements Serializable
 {
 
