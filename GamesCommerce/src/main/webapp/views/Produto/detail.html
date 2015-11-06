@@ -8,36 +8,36 @@
     </div>
     
 
-    <div class="form-group" ng-class="{'has-error': ProdutoForm.Descricao.$invalid}">
-        <label for="Descricao" class="col-sm-2 control-label">Descricao</label>
-        <div id="DescricaoControls" class="col-sm-10">
-            <input id="Descricao" name="Descricao" type="text" required class="form-control" ng-model="produto.Descricao" placeholder="Enter the Produto Descricao"></input>
-            <span class="help-block error" ng-show="ProdutoForm.Descricao.$error.required">required</span> 
+    <div class="form-group" ng-class="{'has-error': ProdutoForm.descricao.$invalid}">
+        <label for="descricao" class="col-sm-2 control-label">Descricao</label>
+        <div id="descricaoControls" class="col-sm-10">
+            <input id="descricao" name="descricao" type="text" required class="form-control" ng-model="produto.descricao" placeholder="Enter the Produto Descricao"></input>
+            <span class="help-block error" ng-show="ProdutoForm.descricao.$error.required">required</span> 
         </div>
     </div>
 
-    <div class="form-group" ng-class="{'has-error': ProdutoForm.Nome.$invalid}">
-        <label for="Nome" class="col-sm-2 control-label">Nome</label>
-        <div id="NomeControls" class="col-sm-10">
-            <input id="Nome" name="Nome" type="text" required class="form-control" ng-model="produto.Nome" placeholder="Enter the Produto Nome"></input>
-            <span class="help-block error" ng-show="ProdutoForm.Nome.$error.required">required</span> 
+    <div class="form-group" ng-class="{'has-error': ProdutoForm.nome.$invalid}">
+        <label for="nome" class="col-sm-2 control-label">Nome</label>
+        <div id="nomeControls" class="col-sm-10">
+            <input id="nome" name="nome" type="text" required class="form-control" ng-model="produto.nome" placeholder="Enter the Produto Nome"></input>
+            <span class="help-block error" ng-show="ProdutoForm.nome.$error.required">required</span> 
         </div>
     </div>
 
-    <div class="form-group" ng-class="{'has-error': ProdutoForm.Valor.$invalid}">
-        <label for="Valor" class="col-sm-2 control-label">Valor</label>
-        <div id="ValorControls" class="col-sm-10">
-            <input id="Valor" name="Valor" type="number" required class="form-control" ng-model="produto.Valor" placeholder="Enter the Produto Valor"></input>
-            <span class="help-block error" ng-show="ProdutoForm.Valor.$error.required">required</span> 
-            <span class="help-block error" ng-show="ProdutoForm.Valor.$error.number">not a number</span>
+    <div class="form-group" ng-class="{'has-error': ProdutoForm.valor.$invalid}">
+        <label for="valor" class="col-sm-2 control-label">Valor</label>
+        <div id="valorControls" class="col-sm-10">
+            <input id="valor" name="valor" type="number" required class="form-control" ng-model="produto.valor" placeholder="Enter the Produto Valor"></input>
+            <span class="help-block error" ng-show="ProdutoForm.valor.$error.required">required</span> 
+            <span class="help-block error" ng-show="ProdutoForm.valor.$error.number">not a number</span>
         </div>
     </div>
 
-    <div class="form-group" ng-class="{'has-error': ProdutoForm.Estoque.$invalid}">
-        <label for="Estoque" class="col-sm-2 control-label">Estoque</label>
-        <div id="EstoqueControls" class="col-sm-10">
-            <input id="Estoque" name="Estoque" type="text" required class="form-control" ng-model="produto.Estoque" placeholder="Enter the Produto Estoque"></input>
-            <span class="help-block error" ng-show="ProdutoForm.Estoque.$error.required">required</span> 
+    <div class="form-group" ng-class="{'has-error': ProdutoForm.estoque.$invalid}">
+        <label for="estoque" class="col-sm-2 control-label">Estoque</label>
+        <div id="estoqueControls" class="col-sm-10">
+            <input id="estoque" name="estoque" type="text" required class="form-control" ng-model="produto.estoque" placeholder="Enter the Produto Estoque"></input>
+            <span class="help-block error" ng-show="ProdutoForm.estoque.$error.required">required</span> 
         </div>
     </div>
 

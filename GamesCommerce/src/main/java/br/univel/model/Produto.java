@@ -28,16 +28,16 @@ public class Produto implements Serializable
    private int version;
 
    @Column(nullable = false)
-   private String Descricao;
+   private String descricao;
 
    @Column(nullable = false)
-   private String Nome;
+   private String nome;
 
    @Column(nullable = false)
-   private double Valor;
+   private double valor;
 
    @Column(nullable = false)
-   private String Estoque;
+   private String estoque;
 
    @Column
    private String imagem;
@@ -101,42 +101,42 @@ public class Produto implements Serializable
 
    public String getDescricao()
    {
-      return Descricao;
+      return descricao;
    }
 
-   public void setDescricao(String Descricao)
+   public void setDescricao(String descricao)
    {
-      this.Descricao = Descricao;
+      this.descricao = descricao;
    }
 
    public String getNome()
    {
-      return Nome;
+      return nome;
    }
 
-   public void setNome(String Nome)
+   public void setNome(String nome)
    {
-      this.Nome = Nome;
+      this.nome = nome;
    }
 
    public double getValor()
    {
-      return Valor;
+      return valor;
    }
 
-   public void setValor(double Valor)
+   public void setValor(double valor)
    {
-      this.Valor = Valor;
+      this.valor = valor;
    }
 
    public String getEstoque()
    {
-      return Estoque;
+      return estoque;
    }
 
-   public void setEstoque(String Estoque)
+   public void setEstoque(String estoque)
    {
-      this.Estoque = Estoque;
+      this.estoque = estoque;
    }
 
    public String getImagem()
@@ -173,13 +173,13 @@ public class Produto implements Serializable
    public String toString()
    {
       String result = getClass().getSimpleName() + " ";
-      if (Descricao != null && !Descricao.trim().isEmpty())
-         result += "Descricao: " + Descricao;
-      if (Nome != null && !Nome.trim().isEmpty())
-         result += ", Nome: " + Nome;
-      result += ", Valor: " + Valor;
-      if (Estoque != null && !Estoque.trim().isEmpty())
-         result += ", Estoque: " + Estoque;
+      if (descricao != null && !descricao.trim().isEmpty())
+         result += "Descricao: " + descricao;
+      if (nome != null && !nome.trim().isEmpty())
+         result += ", Nome: " + nome;
+      result += ", Valor: " + valor;
+      if (estoque != null && !estoque.trim().isEmpty())
+         result += ", Estoque: " + estoque;
       if (imagem != null && !imagem.trim().isEmpty())
          result += ", imagem: " + imagem;
       result += ", quantidade: " + quantidade;
