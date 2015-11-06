@@ -43,9 +43,7 @@ public class Usuario implements Serializable
    @Column
    private String cpf;
 
-   @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-   private Set<Pedido> pedido = new HashSet<Pedido>();
-
+   
    public Long getId()
    {
       return this.id;
@@ -164,13 +162,5 @@ public class Usuario implements Serializable
       return result;
    }
 
-   public Set<Pedido> getPedido()
-   {
-      return this.pedido;
-   }
-
-   public void setPedido(final Set<Pedido> pedido)
-   {
-      this.pedido = pedido;
-   }
+   
 }

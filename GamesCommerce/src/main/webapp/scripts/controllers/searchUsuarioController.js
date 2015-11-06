@@ -1,6 +1,6 @@
 
 
-angular.module('gamesCommerce').controller('SearchUsuarioController', function($scope, $http, UsuarioResource , PedidoResource) {
+angular.module('gamesCommerce').controller('SearchUsuarioController', function($scope, $http, UsuarioResource ) {
 
     $scope.search={};
     $scope.currentPage = 0;

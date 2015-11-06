@@ -1,27 +1,8 @@
 
-angular.module('gamesCommerce').controller('NewUsuarioController', function ($scope, $location, locationParser, UsuarioResource , PedidoResource) {
+angular.module('gamesCommerce').controller('NewUsuarioController', function ($scope, $location, locationParser, UsuarioResource ) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.usuario = $scope.usuario || {};
-    
-    $scope.pedidoList = PedidoResource.queryAll(function(items){
-        $scope.pedidoSelectionList = $.map(items, function(item) {
-            return ( {
-                value : item.id,
-                text : item.id
-            });
-        });
-    });
-    $scope.$watch("pedidoSelection", function(selection) {
-        if (typeof selection != 'undefined') {
-            $scope.usuario.pedido = [];
-            $.each(selection, function(idx,selectedItem) {
-                var collectionItem = {};
-                collectionItem.id = selectedItem.value;
-                $scope.usuario.pedido.push(collectionItem);
-            });
-        }
-    });
     
 
     $scope.save = function() {

@@ -1,6 +1,6 @@
 
 
-angular.module('gamesCommerce').controller('EditUsuarioController', function($scope, $routeParams, $location, UsuarioResource , PedidoResource) {
+angular.module('gamesCommerce').controller('EditUsuarioController', function($scope, $routeParams, $location, UsuarioResource ) {
     var self = this;
     $scope.disabled = false;
     $scope.$location = $location;
@@ -9,27 +9,6 @@ angular.module('gamesCommerce').controller('EditUsuarioController', function($sc
         var successCallback = function(data){
             self.original = data;
             $scope.usuario = new UsuarioResource(self.original);
-            PedidoResource.queryAll(function(items) {
-                $scope.pedidoSelectionList = $.map(items, function(item) {
-                    var wrappedObject = {
-                        id : item.id
-                    };
-                    var labelObject = {
-                        value : item.id,
-                        text : item.id
-                    };
-                    if($scope.usuario.pedido){
-                        $.each($scope.usuario.pedido, function(idx, element) {
-                            if(item.id == element.id) {
-                                $scope.pedidoSelection.push(labelObject);
-                                $scope.usuario.pedido.push(wrappedObject);
-                            }
-                        });
-                        self.original.pedido = $scope.usuario.pedido;
-                    }
-                    return labelObject;
-                });
-            });
         };
         var errorCallback = function() {
             $location.path("/Usuarios");
@@ -67,17 +46,6 @@ angular.module('gamesCommerce').controller('EditUsuarioController', function($sc
         $scope.usuario.$remove(successCallback, errorCallback);
     };
     
-    $scope.pedidoSelection = $scope.pedidoSelection || [];
-    $scope.$watch("pedidoSelection", function(selection) {
-        if (typeof selection != 'undefined' && $scope.usuario) {
-            $scope.usuario.pedido = [];
-            $.each(selection, function(idx,selectedItem) {
-                var collectionItem = {};
-                collectionItem.id = selectedItem.value;
-                $scope.usuario.pedido.push(collectionItem);
-            });
-        }
-    });
     
     $scope.get();
 });

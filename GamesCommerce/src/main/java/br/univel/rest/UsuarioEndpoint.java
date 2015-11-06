@@ -58,7 +58,7 @@ public class UsuarioEndpoint
    @Produces("application/json")
    public Response findById(@PathParam("id") Long id)
    {
-      TypedQuery<Usuario> findByIdQuery = em.createQuery("SELECT DISTINCT u FROM Usuario u LEFT JOIN FETCH u.pedido WHERE u.id = :entityId ORDER BY u.id", Usuario.class);
+      TypedQuery<Usuario> findByIdQuery = em.createQuery("SELECT DISTINCT u FROM Usuario u WHERE u.id = :entityId ORDER BY u.id", Usuario.class);
       findByIdQuery.setParameter("entityId", id);
       Usuario entity;
       try
@@ -80,7 +80,7 @@ public class UsuarioEndpoint
    @Produces("application/json")
    public List<Usuario> listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult)
    {
-      TypedQuery<Usuario> findAllQuery = em.createQuery("SELECT DISTINCT u FROM Usuario u LEFT JOIN FETCH u.pedido ORDER BY u.id", Usuario.class);
+      TypedQuery<Usuario> findAllQuery = em.createQuery("SELECT DISTINCT u FROM Usuario u ORDER BY u.id", Usuario.class);
       if (startPosition != null)
       {
          findAllQuery.setFirstResult(startPosition);
