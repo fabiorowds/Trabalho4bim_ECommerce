@@ -43,7 +43,7 @@ public class Pedido implements Serializable
    private String observacao;
 
    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
-   private Set<PedidoItens> itemPedido = new HashSet<PedidoItens>();
+   private HashSet<PedidoItens> itemPedido = new HashSet<PedidoItens>();
 
    public Long getId()
    {
@@ -141,7 +141,7 @@ public class Pedido implements Serializable
       return this.itemPedido;
    }
 
-   public void setItemPedido(final Set<PedidoItens> itemPedido)
+   public void setItemPedido(final HashSet<PedidoItens> itemPedido)
    {
       this.itemPedido = itemPedido;
    }
